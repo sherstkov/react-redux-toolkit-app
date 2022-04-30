@@ -5,6 +5,7 @@ import {
   collectionGroup,
   getDocs,
   setDoc,
+  deleteDoc,
   doc,
 } from 'firebase/firestore';
 import { Cars, Car } from '@customTypes/Cars';
@@ -42,7 +43,20 @@ export const apiSlice = createApi({
       },
       invalidatesTags: ['Cars'],
     }),
+    deleteCar: builder.mutation({
+      queryFn: async (id: string) => {
+        try {
+          const ref = doc(firestore, 'cars', id);
+          await deleteDoc(ref);
+          return { data: 'Car has been deleted' };
+        } catch (error) {
+          return { error };
+        }
+      },
+      invalidatesTags: ['Cars'],
+    }),
   }),
 });
 
-export const { useGetCarsQuery, useCreateCarMutation } = apiSlice;
+export const { useGetCarsQuery, useCreateCarMutation, useDeleteCarMutation } =
+  apiSlice;

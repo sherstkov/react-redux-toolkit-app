@@ -66,7 +66,7 @@ const CarAddForm: FC = () => {
           value={carTransmission}
           onChange={(e) => setCarTransmission(+e.target.value)}
         >
-          <option value='0'>Select transmission</option>
+          <option value='3'>Select transmission</option>
         </select>
       </div>
       <div>

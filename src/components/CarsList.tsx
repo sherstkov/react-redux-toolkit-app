@@ -1,11 +1,13 @@
 import { Loader } from '@components/index';
 import styles from '@styles/CarsList.module.css';
-import { FC } from 'react';
-import { useGetCarsQuery } from '../api/apiSlice';
+import { FC, useCallback } from 'react';
+import { useGetCarsQuery, useDeleteCarMutation } from '../api/apiSlice';
 import { Cars, Car } from '@customTypes/Cars';
 
 const CarsList: FC = () => {
-  const { data: cars = [], isLoading, isError } = useGetCarsQuery();
+  const { data: cars = [], isLoading, isError } = useGetCarsQuery(null);
+  const [deleteCar] = useDeleteCarMutation();
+  console.log('render'); //TODO delete
 
   if (isLoading) {
     return <Loader />;
@@ -19,8 +21,13 @@ const CarsList: FC = () => {
       return <h2>No cars yet</h2>;
     }
     return carsList.map((car: Car) => (
-      <div key='123' className={styles.card}>
+      <div key={car.id} className={styles.card}>
+        <h3>name: {car.name}</h3>
         <h3>Color: {car.color}</h3>
+        <h3>transmission: {car.transmission}</h3>
+        <h3>mileage: {car.mileage}</h3>
+        <h3>description: {car.description}</h3>
+        <button onClick={() => deleteCar(car.id)}>Delete</button>
       </div>
     ));
   };
