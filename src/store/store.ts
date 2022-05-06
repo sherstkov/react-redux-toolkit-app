@@ -1,21 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { apiSlice } from 'api/apiSlice';
+import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
+import { apiSlice } from 'slices/apiSlice';
+import filters from 'slices/filtersSlice';
 
-// import filters from '../components/'
-
-const stringMiddleware = () => (next) => (action) => {
-  if (typeof action === 'string') {
-    return next({
-      type: action,
-    });
-  }
-  return next(action);
-};
 const store = configureStore({
-  reducer: { [apiSlice.reducerPath]: apiSlice.reducer },
+  reducer: { filters, [apiSlice.reducerPath]: apiSlice.reducer },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(stringMiddleware, apiSlice.middleware),
+    getDefaultMiddleware().concat(apiSlice.middleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default store;
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

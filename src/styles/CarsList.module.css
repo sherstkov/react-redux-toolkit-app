@@ -1,11 +1,34 @@
 .card {
-  padding: 2rem;
+  padding: 0.25rem;
   margin: 1rem 0;
   background-color: white;
   border: 1px solid var(--color-gray);
   border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  min-width: 50rem;
 }
 
-.card footer {
+/* .card footer {
   display: flex;
+} */
+
+.img-container {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-container {
+  flex: 0 1 400px;
+}
+
+.price-info {
+  padding-right: 2rem;
 }

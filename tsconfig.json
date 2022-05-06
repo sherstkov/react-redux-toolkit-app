@@ -22,7 +22,8 @@
       "@hooks/*": ["hooks/*"],
       "@store/*": ["store/*"],
       "@services/*": ["services/*"],
-      "@customTypes/*": ["customTypes/*"]
+      "@customTypes/*": ["customTypes/*"],
+      "@images/*": ["/assets/images/*"]
     }
   },
   "include": ["src"],

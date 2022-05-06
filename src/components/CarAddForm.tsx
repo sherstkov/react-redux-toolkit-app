@@ -1,15 +1,18 @@
 import { FC, useState, FormEvent } from 'react';
 import styles from '@styles/CarAddForm.module.css';
-import { Cars, Car } from '@customTypes/Cars';
-import { useCreateCarMutation } from '../api/apiSlice';
+import { Car, Transmission } from '@customTypes/Cars';
+import { useCreateCarMutation } from '../slices/apiSlice';
+import { FilterOptions } from './index';
 import { v4 as uuidv4 } from 'uuid';
 
 const CarAddForm: FC = () => {
   const [carName, setCarName] = useState('');
   const [carColor, setCarColor] = useState('');
   const [carDescription, setCarDescription] = useState('');
-  const [carTransmission, setCarTransmission] = useState(0);
-  const [carMileage, setCarMileage] = useState(0);
+  const [carTransmission, setCarTransmission] = useState(
+    'Defaul22t' as Transmission
+  );
+  const [carPrice, setCarPrice] = useState(0);
 
   const [createCar] = useCreateCarMutation();
 
@@ -22,7 +25,8 @@ const CarAddForm: FC = () => {
       color: carColor,
       transmission: carTransmission,
       description: carDescription,
-      mileage: carMileage,
+      price: carPrice,
+      image: null,
     };
 
     createCar(newCar);
@@ -64,22 +68,23 @@ const CarAddForm: FC = () => {
           required
           name='transmission'
           value={carTransmission}
-          onChange={(e) => setCarTransmission(+e.target.value)}
+          onChange={(e) => setCarTransmission(e.target.value as Transmission)}
         >
-          <option value='3'>Select transmission</option>
+          <option value='Default'>Select transmission</option>
+          <FilterOptions />
         </select>
       </div>
       <div>
         <label className={styles.label} htmlFor='name'>
-          New car mileage:
+          New car price:
         </label>
         <input
           required
           type='number'
           name='mileage'
           placeholder='Type a new car name here'
-          value={carMileage}
-          onChange={(e) => setCarMileage(+e.target.value)}
+          value={carPrice}
+          onChange={(e) => setCarPrice(+e.target.value)}
         />
       </div>
       <div>

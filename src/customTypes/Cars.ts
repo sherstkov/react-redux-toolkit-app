@@ -1,9 +1,8 @@
-enum Transmission {
-  DEFAULT = 0,
-  AT,
-  MT,
-  AM,
-  CVT,
+export enum Transmission {
+  AT = 'Automatic Transmission',
+  MT = 'Manual Transmission',
+  AMT = 'Automated Manual Transmission',
+  CVT = 'Continuous Variable Transmission',
 }
 
 export type Car = {
@@ -11,9 +10,9 @@ export type Car = {
   name: string;
   color: string;
   transmission: Transmission;
-  mileage: number;
+  price: number;
   description: string;
+  image: string | null;
 };
 
-// export interface Cars extends Array<Car> {}
 export type Cars = Car[];
