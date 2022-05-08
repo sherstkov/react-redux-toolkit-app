@@ -1,17 +1,13 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useAppSelector, useAppDispatch } from '@store/store';
 import {
   setLeftFilter,
   setRightFilter,
   filtersChanged,
 } from 'slices/filtersSlice';
-import store from '@store/store';
-import { Transmission } from '@customTypes/Cars';
 import styles from '@styles/Forms.module.css';
 
 const CarsFilters: FC = () => {
-  // const [inputFilterLeft, setInputFilter] = useState()
-
   const { activeFilter, checkboxFilters } = useAppSelector(
     (state) => state.filters
   );
