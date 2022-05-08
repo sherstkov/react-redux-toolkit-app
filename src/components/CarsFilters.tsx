@@ -7,7 +7,7 @@ import {
 } from 'slices/filtersSlice';
 import store from '@store/store';
 import { Transmission } from '@customTypes/Cars';
-import styles from '@styles/CarAddForm.module.css';
+import styles from '@styles/Forms.module.css';
 
 const CarsFilters: FC = () => {
   // const [inputFilterLeft, setInputFilter] = useState()
@@ -53,11 +53,14 @@ const CarsFilters: FC = () => {
   const checkboxElements = renderBoxFilters(checkboxFilters);
   return (
     <form className={styles.carForm}>
+      <label className={styles.label} htmlFor='checkbox'>
+        Filters:
+      </label>
       {checkboxElements}
       <label className={styles.label} htmlFor='input'>
         Price:
       </label>
-      <div>
+      <div className={styles['price-container']}>
         <input
           type='number'
           name='leftInput'

@@ -1,22 +1,25 @@
+.container {
+  width: 100%;
+}
+
 .card {
-  padding: 0.25rem;
-  margin: 1rem 0;
+  position: relative;
   background-color: white;
   border: 1px solid var(--color-gray);
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
-  min-width: 50rem;
+  flex-basis: 100%;
+  max-width: 100%;
+  padding: 0.25rem;
+  margin: 1rem 0;
 }
-
-/* .card footer {
-  display: flex;
-} */
 
 .img-container {
   height: 180px;
   position: relative;
   overflow: hidden;
+  align-self: center;
 }
 
 .img {
@@ -26,9 +29,26 @@
 }
 
 .info-container {
-  flex: 0 1 400px;
+  width: 43%;
+  margin: 0 auto;
 }
 
 .price-info {
-  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 21%;
+}
+
+@media (max-width: 40em) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .info-container {
+    width: 100%;
+    padding: 0 20px;
+  }
 }

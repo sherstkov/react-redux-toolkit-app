@@ -58,8 +58,8 @@ const CarsList: FC = () => {
           <p>{car.description}</p>
         </div>
         <div className={styles['price-info']}>
-          <h3>Price: {car.price}</h3>
-          <span onClick={() => deleteCar(car.id)}>
+          <h3>Price: {car.price}$</h3>
+          <span onClick={() => deleteCar(car.id)} style={{ cursor: 'pointer' }}>
             <svg
               fill='#000000'
               xmlns='http://www.w3.org/2000/svg'
@@ -76,7 +76,7 @@ const CarsList: FC = () => {
   };
   const elements = renderCarsList(filteredCars as Cars);
   return (
-    <div>
+    <div className={styles.container}>
       <h1>CarsList</h1>
       {elements}
     </div>

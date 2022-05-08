@@ -1,5 +1,5 @@
 import { FC, useState, FormEvent } from 'react';
-import styles from '@styles/CarAddForm.module.css';
+import styles from '@styles/Forms.module.css';
 import { Car, Transmission } from '@customTypes/Cars';
 import { useCreateCarMutation } from '../slices/apiSlice';
 import { FilterOptions } from './index';
