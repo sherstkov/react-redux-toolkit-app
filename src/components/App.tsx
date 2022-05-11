@@ -1,12 +1,18 @@
 import '@styles/globals.css';
 import styles from '@styles/App.module.css';
-import { CarsList, CarAddForm, CarsFilters } from '@components/index';
-import { FC } from 'react';
+import {
+  CarsList,
+  CarAddForm,
+  CarsFilters,
+  ErrorBoundary,
+} from '@components/index';
 
-const App: FC = () => {
+const App = () => {
   return (
     <main className={styles.container}>
-      <CarsList />
+      <ErrorBoundary>
+        <CarsList />
+      </ErrorBoundary>
       <div className={styles.aside}>
         <CarAddForm />
         <CarsFilters />

@@ -1,12 +1,12 @@
 import { Loader } from '@components/index';
 import styles from '@styles/CarsList.module.css';
-import { FC, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useGetCarsQuery, useDeleteCarMutation } from '../slices/apiSlice';
 import { Cars, Car } from '@customTypes/Cars';
 import unknownCarImage from '@images/unknownCar.png';
 import { useAppSelector } from '@store/store';
 
-const CarsList: FC = () => {
+const CarsList = () => {
   const { data: cars = [], isLoading, isError } = useGetCarsQuery(null);
   const [deleteCar] = useDeleteCarMutation();
 

@@ -1,7 +1,6 @@
-import { FC } from 'react';
 import { Transmission } from '@customTypes/Cars';
 
-const FilterOptions: FC = () => {
+const FilterOptions = () => {
   const elements = Object.values(Transmission).map((item) => (
     <option key={item} value={item}>
       {item}

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '@styles/Forms.module.css';
 import { Car, Transmission } from '@customTypes/Cars';
 import { useCreateCarMutation } from '../slices/apiSlice';
@@ -6,7 +6,7 @@ import { FilterOptions } from './index';
 import { v4 as uuidv4 } from 'uuid';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-const CarAddForm: FC = () => {
+const CarAddForm = () => {
   const [carName, setCarName] = useState('');
   const [carColor, setCarColor] = useState('');
   const [carDescription, setCarDescription] = useState('');
@@ -24,14 +24,17 @@ const CarAddForm: FC = () => {
     reset,
   } = useForm<Car>();
 
+  //reset react-hook-form registers
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset({ name: '', color: '' });
     }
   }, [isSubmitSuccessful, reset]);
 
+  //handle submit
   const onSubmit: SubmitHandler<Car> = () => sendData();
 
+  //send new car to firestore
   const sendData = () => {
     const newCar: Car = {
       id: uuidv4(),
