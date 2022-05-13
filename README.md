@@ -13,10 +13,12 @@ This is a React/Redux cars webapp. Information stored at Firestore. Build with V
 ## Development
 
 Run the development server:
-
+(You have to make your firebaseConfig.ts)
 ```bash
 docker-compose up
 ```
+Open http://localhost:8900 to view it in the browser
+
 ## Features
 
 - 🚗 Add new car to list
