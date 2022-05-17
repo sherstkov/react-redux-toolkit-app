@@ -26,7 +26,7 @@ const CarsFilters = () => {
   //handle input price filters
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = +e.target.value;
-    if (value == NaN || e.target.value === '') {
+    if (isNaN(value) || e.target.value === '') {
       e.target.name === 'leftInput'
         ? dispatch(setLeftFilter(0))
         : dispatch(setRightFilter(Number.MAX_VALUE));
